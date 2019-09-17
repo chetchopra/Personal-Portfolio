@@ -1,6 +1,11 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
 import About from './components/About'
+import Resume from './components/resume/Resume'
+import OptionMenu from './components/OptionMenu'
+import SocialAnimated from './components/SocialAnimated'
+import Project from './components/Project'
+
 import {
   Container,
   Divider,
@@ -13,6 +18,8 @@ import {
   Menu,
   Segment,
   Visibility,
+  Button,
+  MenuItem
 } from 'semantic-ui-react'
 
 import {
@@ -36,7 +43,7 @@ const menuStyle = {
 }
 
 const fixedMenuStyle = {
-  backgroundColor: 'yellow',
+  backgroundColor: 'gray',
   border: '1px solid #ddd',
   boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.2)',
 }
@@ -44,6 +51,7 @@ const fixedMenuStyle = {
 const overlayStyle = {
   float: 'left',
   margin: '0em 3em 1em 0em',
+
 }
 
 const fixedOverlayStyle = {
@@ -57,11 +65,12 @@ const overlayMenuStyle = {
   position: 'relative',
   left: 0,
   transition: 'left 0.5s ease',
+  textAlign: 'center',
 }
 
 const fixedOverlayMenuStyle = {
   ...overlayMenuStyle,
-  left: '800px',
+  left: '1200px',
 }
 
 const LeftImage = () => (
@@ -132,55 +141,28 @@ export default class StickyLayout extends Component {
         <style>
           {`
           html, body {
-            background: #ffffff;
+            background: #d9d3d2;
           }
         `}
-        </style>
+        </style> 
 
-        <Container text style={{ marginTop: '2em' }}>
-          
-          <Header as='h1'>Chetanya Chopra</Header>
-          <p>
-            This example shows how to use lazy loaded images, a sticky menu, and a simple text
-            container
-          </p>
-
+        <Container  style={{ marginTop: '2em' }}>
+          <Grid>
+            <Grid.Column width={4}>
+              <Image src='https://www.w3schools.com/howto/img_avatar.png' size='medium' circular />
+            </Grid.Column>
+            <Grid.Column width={12}>
+              <Header as='h1'>Chetanya Chopra</Header>
+              <p>
+                This example shows how to use lazy loaded images, a sticky menu, and a simple text
+                container
+              </p>
+              <SocialAnimated/>
+            </Grid.Column>
+          </Grid>
         </Container>
 
 
-
-        <Visibility
-          offset={80}
-          once={false}
-          onTopPassed={this.stickOverlay}
-          onTopVisible={this.unStickOverlay}
-          style={overlayFixed ? { ...overlayStyle, ...overlayRect } : {}}
-        >
-                    {/* <div ref={this.handleOverlayRef} style={overlayFixed ? fixedOverlayStyle : overlayStyle}> */}
-            <Menu
-              icon='labeled'
-              style={overlayFixed ? fixedOverlayMenuStyle : overlayMenuStyle}
-              
-            >
-              <Menu.Item>
-                <Icon name='twitter' />
-                Twitter
-              </Menu.Item>
-
-              <Menu.Item>
-                <Icon name='facebook' />
-                Share
-              </Menu.Item>
-
-              <Menu.Item>
-                <Icon name='mail' />
-                Email
-              </Menu.Item>
-            </Menu>
-          {/* </div> */}
-
-
-        </Visibility>
 
         
 
@@ -191,6 +173,7 @@ export default class StickyLayout extends Component {
           onBottomPassed={this.stickTopMenu}
           onBottomVisible={this.unStickTopMenu}
           once={false}
+          offset={45}
         >
           <Menu pointing secondary
             borderless
@@ -202,18 +185,27 @@ export default class StickyLayout extends Component {
               <Menu.Item as={NavLink} exact to='/about' activeClassName='active'>About</Menu.Item>
               <Menu.Item as={NavLink} exact to='/projects' activeClassName='active'>Projects</Menu.Item>
               <Menu.Item as={NavLink} exact to='/resume' activeClassName='active'>Resume</Menu.Item>
+
+              {menuFixed ? <Menu.Item><Icon name='github'/></Menu.Item> : ""}
             </Container>
           </Menu>
+
         </Visibility>
 
 
 
-        <Container text>
+
+
+        <Container >
 
           <Switch>
-            <Route path='/' exact render={null} />
+            {/* <Route path='/' exact render={null} /> */}
+            
             <Route path='/about' exact render={props => <About {...props} />} />
-            <Redirect from='*' to='/' />
+            <Route path='/resume' exact render={props => <Resume {...props} />} />
+            <Route path='/projects' exact render={props => <Project {...props} />} />
+            
+            <Redirect from='*' to='/about' />
           </Switch>
          
         </Container>
