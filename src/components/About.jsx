@@ -9,8 +9,7 @@ const About = props => {
         </Header>
 
         <p>I've always been a bit of a tinkerer. When I was in college I thought I wanted to be an Electrical Engineer but physics 
-            was not my thing and I found that I really enjoyed a Computer Science course I took. So I switched majors.  Now I spend my 
-            time building upon my skills making side projects, while looking for work!</p>
+            was not my thing and I found that I really enjoyed a Computer Science course I took. So I switched majors.</p>
 
         <p>After graduation, I created and taught curriculum for a youth robotics program at UWT. After that I spent 2.5 years as a 
             Software Service Engineer, while I did well and enjoyed it, I just couldn't go of my desire to be on a development team 

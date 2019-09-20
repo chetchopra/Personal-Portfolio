@@ -154,8 +154,8 @@ export default class StickyLayout extends Component {
             <Grid.Column width={12}>
               <Header as='h1'>Chetanya Chopra</Header>
               <p>
-                This example shows how to use lazy loaded images, a sticky menu, and a simple text
-                container
+                {/* This example shows how to use lazy loaded images, a sticky menu, and a simple text
+                container */}
               </p>
               <SocialAnimated/>
             </Grid.Column>
@@ -186,7 +186,7 @@ export default class StickyLayout extends Component {
               <Menu.Item as={NavLink} exact to='/projects' activeClassName='active'>Projects</Menu.Item>
               <Menu.Item as={NavLink} exact to='/resume' activeClassName='active'>Resume</Menu.Item>
 
-              {menuFixed ? <Menu.Item><Icon name='github'/></Menu.Item> : ""}
+              {/* {menuFixed ? <Menu.Item><Icon name='github'/></Menu.Item> : ""} */}
             </Container>
           </Menu>
 
